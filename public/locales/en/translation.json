@@ -1,0 +1,15 @@
+{
+    "Nav":{
+        "1":"Home",
+        "2": "About"
+    },
+    "lang":{
+        "1":"English",
+        "2": "日本語"},
+    "greet":{
+        "1":"Today's Headlines From",
+        "2":"Ajay's Cloud Notes"
+        }
+    
+
+}
