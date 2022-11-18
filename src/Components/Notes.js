@@ -2,30 +2,46 @@ import React, { useContext, useState } from 'react'
 import Popup from './Popup'
 import noteContext from '../Context/notes/noteContext';
 import NoteItem from './NoteItem'
+import AddNote from './AddNote';
+import AddNoteCard from './AddNoteCard';
 
 function Notes() {
 
     const context = useContext(noteContext);
-    const {notes, setNotes} = context;
+    const {notes} = context;
     const [trigger, settrigger] = useState(false);
+    const [triggerNewNote, settriggerNewNote] = useState(false);
     const [ id, setId] = useState({
         title: "",
         id: "",
-        decription:"",
-        tag:""
+        description: "",
+        tag: ""
     });
 
   return (
     <>
-    <h2 className='text-4xl text-slate-700'>Your Notes</h2>
+    <h2 className='text-4xl text-slate-700 mx-auto dark:text-slate-200'>Your Notes</h2>
     <Popup trigger={trigger} state={settrigger}>
-        <h1>{id.title}</h1>
-        <p>{id.decription}</p>
+        <div className='flex justify-center items-start mt-3'>
+        <h1 className='text-4xl text-slate-800 '>{id.title}</h1>
+        </div>
+        <hr />
+        <p>{id.description}</p>
+    </Popup>
+    
+    <Popup trigger={triggerNewNote} state={settriggerNewNote}>
+        
+
+        <AddNote state={settriggerNewNote} />
         
 
         </Popup>
 
+
+        
     <div className='grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2'>
+        <AddNoteCard settrigger={settriggerNewNote}/>
+        
         
 
     {notes.map((note)=>{
