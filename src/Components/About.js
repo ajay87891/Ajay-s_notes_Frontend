@@ -1,4 +1,5 @@
-import React from 'react'
+import React, {useContext, useEffect} from 'react'
+
 
 function About() {
   return (

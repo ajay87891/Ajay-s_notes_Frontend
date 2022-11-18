@@ -2,18 +2,19 @@ import React, { useState } from "react";
 // import PropTypes from 'prop-types'
 // import { Navbar } from "flowbite-react";
 import icon from "../icons/notes.png";
-import { NavLink } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import uk from "../icons/uk.png";
 import japan from "../icons/japan.png";
 
 const NavBar = () => {
+  let location = useLocation();
   const { t, i18n } = useTranslation();
   const [dark, setDark] = useState(true);
   const [expand, setExpand] = useState(false);
   const [lang,setlang] = useState('English')
   const [langicon,setlangicon] = useState(uk)
+ 
 
   const changeLang = (Lang)=>{
 
@@ -28,11 +29,6 @@ const NavBar = () => {
     }
 
   }
-
-  const activeLink =
-    "block py-2 pr-4 pl-3  rounded  md:p-0 md:bg-transparent text-white bg-blue-700 md:text-blue-700 dark:text-white";
-  const inactiveLink =
-    " block py-2 pr-4 pl-3 md:p-0 ease-linear duration-500 text-gray-700 rounded hover:bg-gray-300 hover:text-blue-800 md:hover:bg-transparent md:border-0 md:hover:text-blue-700  dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent";
 
   const changeTheme = () => {
     if (dark) {
@@ -69,7 +65,7 @@ const NavBar = () => {
 
   return (
     <div>
-      <nav className="bg-yellow-100/30 fixed border-gray-200  px-4 md:px-2 py-2.5 rounded-lg dark:bg-gray-900/60  ease-linear duration-500 w-full mt-0 ml-0 backdrop-blur-xl z-10  shadow-md">
+      <nav className="bg-white/20 fixed top-0  border-gray-200  px-4 md:px-2 py-2.5 rounded-lg dark:bg-gray-900/60  ease-linear duration-500 w-full mt-0 ml-0 backdrop-blur-xl z-10  shadow-md">
         <div className="flex">
           <div className="container flex flex-wrap justify-between items-center mx-auto ">
             <Link to="/" className="flex items-center">
@@ -112,28 +108,25 @@ const NavBar = () => {
             <div className="hidden w-full md:block md:w-auto" id="expand">
               <ul className="flex flex-col p-4 mt-4 bg-gray-50/30 rounded-lg border border-gray-100 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white/0 dark:bg-gray-800/40 md:dark:bg-gray-900/0 dark:border-gray-700  ease-linear duration-500">
                 <li>
-                  <NavLink
+                  <Link
                     to="/"
-                    className={({ isActive }) =>
-                      isActive ? activeLink : inactiveLink
-                    }
+                    className={`block py-2 pr-4 pl-3 md:p-0 rounded ${location.pathname === "/"?"md:bg-transparent text-white bg-blue-700 md:text-blue-700 dark:text-white":"ease-linear duration-500 text-gray-700  hover:bg-gray-300 hover:text-blue-800 md:hover:bg-transparent md:border-0 md:hover:text-blue-700  dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"}`}
                     aria-current="page"
                     onClick={dismissNavLink}
                   >
                     {t("Nav.1")}
-                  </NavLink>
+                  </Link>
                 </li>
                 <li>
-                  <NavLink
-                    to="/entertainment"
-                    className={({ isActive }) =>
-                      isActive ? activeLink : inactiveLink
-                    }
+                  <Link
+                    to="/about"
+                    className={`block py-2 pr-4 pl-3 md:p-0 rounded ${location.pathname === "/about"?"md:bg-transparent text-white bg-blue-700 md:text-blue-700 dark:text-white":"ease-linear duration-500 text-gray-700  hover:bg-gray-300 hover:text-blue-800 md:hover:bg-transparent md:border-0 md:hover:text-blue-700  dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"}`}
+                    
                     aria-current="page"
                     onClick={dismissNavLink}
                   >
                     {t("Nav.2")}
-                  </NavLink>
+                  </Link>
                 </li>
                 
               </ul>
@@ -187,7 +180,6 @@ const NavBar = () => {
               </svg>
             </span>
           </button>
-          {/*lang menue*/}
 
           <div className=" group inline-flex items-start mx-1 md:items-center md:my-auto">
             <div className="cursor-pointer flex  items-center  ">
