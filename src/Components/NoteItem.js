@@ -1,12 +1,16 @@
-import React, {useState} from 'react'
+import React, {useContext} from 'react'
 import delIcon from '../icons/Delete.svg'
 import delIconWhite from '../icons/DeleteWhite.svg'
 import editIcon from '../icons/EditLight.png'
 import editIconDark from '../icons/EditDark.png'
+import noteContext from '../Context/notes/noteContext'
+
 
 
 
 function NoteItem(props) {
+  const context = useContext(noteContext);
+  const {deleteNote} = context;
     const handelUpdate = ()=>{
         props.setId({
             id: props.note._id,
@@ -22,7 +26,9 @@ function NoteItem(props) {
     <h5 className=" cursor-pointer mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{props.note.title}</h5>
     <p className="font-normal text-gray-700 dark:text-gray-400 cursor-pointer">{props.note.description} Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia a assumenda praesentium inventore tempore quis, sint mollitia optio, ea fugiat autem voluptate officiis, earum, nam neque quis consequuntur tenetur!</p>
     <div className='flex flex-row-reverse'>
-        <span className='cursor-pointer'>
+        <span className='cursor-pointer' onClick={()=>{
+          deleteNote(props.note._id)
+        }}>
     <img src={delIcon} alt="Delete" className="h-5 mx-2 mt-3 dark:hidden" />
     <img src={delIconWhite} alt="Delete" className="h-5 mx-2 mt-3  hidden dark:inline" /></span>
     <span className='cursor-pointer' onClick={handelUpdate}>
