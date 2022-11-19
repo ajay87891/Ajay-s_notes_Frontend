@@ -5,10 +5,10 @@ import HoverExit from "../icons/HoverExit.svg"
 function Popup(props) {
   return (props.trigger)?(
 
-    <div className='fixed top-0 left-0 w-full h-screen flex justify-center items-center bg-black/10 backdrop-blur-sm z-30 ease-out duration-200' onClick={()=>{
+    <div className='fixed top-0 left-0 w-full h-screen flex justify-center items-center bg-black/20  z-30 ease-out duration-200' onClick={()=>{
         props.state(false)
     }} >
-        <div className='relative w-4/5 h-[80vh] bg-gradient-to-tr from-purple-200 via-orange-200 to-pink-200 dark:from-slate-600 dark:via-slate-700 dark:to-slate-600 rounded-3xl ease-out duration-200 animate-dropTop' onClick={(e)=>{
+        <div className='relative w-4/5 h-[75vh] md:h-[85vh] bg-white/30 dark:bg-slate-900/10 backdrop-blur-md rounded-3xl ease-out duration-200 animate-dropTop shadow-lg overflow-y-scroll scrollbar-hide border-slate-900/80 border' onClick={(e)=>{
             e.stopPropagation()
         }}>
             
