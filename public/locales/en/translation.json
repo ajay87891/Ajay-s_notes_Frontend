@@ -1,7 +1,9 @@
 {
     "Nav":{
         "1":"Home",
-        "2": "About"
+        "2": "About",
+        "3": "Login",
+        "4": "Sign Up"
     },
     "lang":{
         "1":"English",

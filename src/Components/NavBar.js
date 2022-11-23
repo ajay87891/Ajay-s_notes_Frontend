@@ -128,6 +128,26 @@ const NavBar = () => {
                     {t("Nav.2")}
                   </Link>
                 </li>
+                <li>
+                  <Link
+                    to="/login"
+                    className={`block py-2 pr-4 pl-3 md:p-0 rounded ${location.pathname === "/login"?"md:bg-transparent text-white bg-blue-700 md:text-blue-700 dark:text-white":"ease-linear duration-500 text-gray-700  hover:bg-gray-300 hover:text-blue-800 md:hover:bg-transparent md:border-0 md:hover:text-blue-700  dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"}`}
+                    aria-current="page"
+                    onClick={dismissNavLink}
+                  >
+                    {t("Nav.3")}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/signup"
+                    className={`block py-2 pr-4 pl-3 md:p-0 rounded ${location.pathname === "/signup"?"md:bg-transparent text-white bg-blue-700 md:text-blue-700 dark:text-white":"ease-linear duration-500 text-gray-700  hover:bg-gray-300 hover:text-blue-800 md:hover:bg-transparent md:border-0 md:hover:text-blue-700  dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"}`}
+                    aria-current="page"
+                    onClick={dismissNavLink}
+                  >
+                    {t("Nav.4")}
+                  </Link>
+                </li>
                 
               </ul>
             </div>

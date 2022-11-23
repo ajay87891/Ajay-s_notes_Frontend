@@ -14,7 +14,9 @@ function AddNote(props) {
     {
       settitleval(note.title.length+1)
       setnote({...note,[e.target.name]: e.target.value})
+      
     }
+    
     if(e.target.name === 'description' && note.description.length<500)
     {
       setdescval(note.description.length+1)
@@ -40,7 +42,7 @@ function AddNote(props) {
         <form>
   <div className="mb-6 flex flex-col">
     <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Title</label>
-    <input type="text" className={`bg-gray-50/50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ${titleval < 5 ? 'focus:ring-red-500 focus:border-red-500':'focus:ring-blue-500 focus:border-blue-500' }`} onChange={onChange} placeholder="Title...." name='title' required/>
+    <input type="text" className={`bg-gray-50/50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ${titleval < 5 ? 'focus:ring-red-500 focus:border-red-500':'focus:ring-blue-500 focus:border-blue-500' }`} onChange={onChange} placeholder="Title...." name='title'  required/>
     <p className={`self-end ${titleval < 5 ? 'text-red-600':'text-slate-800' } italic font-bold`}>{titleval}/30</p>
   </div>
   <div className="mb-6">
