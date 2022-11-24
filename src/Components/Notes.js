@@ -27,7 +27,7 @@ function Notes() {
     const [user, setuser] = useState({email:"", firstname:"", lastname:""});
     const getUser = async()=>{
       try {
-        const response = await fetch("http://localhost:5000/api/auth/getUser", {
+        const response = await fetch("https://emerald-penguin-slip.cyclic.app/api/auth/getUser", {
           method: "POST",
           headers: {
             'auth-token' : localStorage.getItem('token')
