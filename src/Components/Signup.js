@@ -49,8 +49,8 @@ const Signup = () => {
     <div className='flex justify-center items-center mt-1' >
       <div className=' items-center justify-center flex'>
 <form onSubmit={handelSubmit}>
-  <div className='bg-white/25 border border-gray-200 rounded-lg shadow-md p-4 sm:p-6 md:p-11 dark:bg-gray-800/25 dark:border-gray-700 w-80  md:w-[420px]'>
-    <h1 className='mb-5 text-xl font-medium text-gray-900 dark:text-white'>{t("signup.1")}</h1>
+  <div className='bg-white/25 border border-gray-200 rounded-lg shadow-md p-4 sm:p-6 md:p-11 dark:bg-gray-800/25 dark:border-gray-700 w-80  md:w-[480px]'>
+    <h1 className='mb-5 text-2xl font-medium text-gray-900 dark:text-white'>{t("signup.1")}</h1>
   <div className="relative z-0 mb-6 w-full group">
       <input type="email" name="email" id="floating_email" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-500 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " onChange={onChange} required />
       <label htmlFor="email" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">{t("signup.2")}</label>

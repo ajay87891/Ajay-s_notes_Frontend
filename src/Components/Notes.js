@@ -8,9 +8,10 @@ import UpdateNote from './UpdateNote';
 import ShowNote from './ShowNote';
 import { useNavigate } from 'react-router-dom';
 import Profile from "./Profile";
+import { useTranslation } from "react-i18next";
 
 function Notes() {
-
+  const {t} = useTranslation();
     const context = useContext(noteContext);
     let navigate = useNavigate();
     const {notes, getNotes} = context;
@@ -23,10 +24,33 @@ function Notes() {
         description: "",
         tag: ""
     });
+    const [user, setuser] = useState({email:"", firstname:"", lastname:""});
+    const getUser = async()=>{
+      try {
+        const response = await fetch("http://localhost:5000/api/auth/getUser", {
+          method: "POST",
+          headers: {
+            'auth-token' : localStorage.getItem('token')
+          },
+          
+        });
+      
+        const {email,firstname,lastname} = await response.json();
+        setuser({email,firstname,lastname});
+        
+       
+
+
+      }
+        catch(error){
+
+        }
+    }
     useEffect(() => {
       if(localStorage.getItem('token'))
       {
         getNotes();
+        getUser();
       }
       else{
         navigate("/login")
@@ -39,12 +63,12 @@ function Notes() {
     <>
      <div className='flex justify-center items-center pt-14' >
      <div className="absolute right-3 top-36 sm:top-24 w-44 max-h-28">
-        <Profile/>
+        <Profile user={user}/>
       
 
       </div>
       <div className='w-10/12 mt-10'>
-    <h2 className='text-4xl text-slate-700 mx-auto mt-10 sm:mt-0 dark:text-slate-200'>Your Notes</h2>
+    <h2 className='text-4xl text-slate-700 mx-auto mt-10 sm:mt-0 dark:text-slate-200'>{t("note.7")}</h2>
     <Popup trigger={trigger} state={settrigger}>
        <UpdateNote id={id} state={settrigger}/>
     </Popup>

@@ -36,6 +36,15 @@
         "8":"Submit",
         "9":"Already Have a Account?",
         "10":"Login"
+    },
+    "note":{
+        "1":"Title",
+        "2":"Tag",
+        "3":"Description",
+        "4":"Update Note",
+        "5":"Add Note",
+        "6":"ADD NEW NOTE",
+        "7":"Your Notes"
     }
     
 
