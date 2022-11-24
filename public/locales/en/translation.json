@@ -3,15 +3,40 @@
         "1":"Home",
         "2": "About",
         "3": "Login",
-        "4": "Sign Up"
+        "4": "Sign Up",
+        "5": "Log out"
     },
     "lang":{
         "1":"English",
         "2": "日本語"},
-    "greet":{
-        "1":"Today's Headlines From",
-        "2":"Ajay's Cloud Notes"
-        }
+    "home":{
+        "1":"Welcome to Ajay's Cloud Notes",
+        "2":"Ajay's Cloud Notes",
+        "3":"Your Notes On the Cloud",
+        "4":"Login To Continue",
+        "5":"Dont Have An Account?",
+        "6":"Click here to SignUp"
+        },
+    "login":{
+        "1":"Sign in to our platform",
+        "2":"Your email",
+        "3":"Your password",
+        "4":"Login to your account",
+        "5":"Not registered?",
+        "6":"Create account"
+    },
+    "signup":{
+        "1":"Sign Up",
+        "2":"Email address",
+        "3":"Password",
+        "4":"Confirm password",
+        "5":"First name",
+        "6":"Last name",
+        "7":"Phone Number",
+        "8":"Submit",
+        "9":"Already Have a Account?",
+        "10":"Login"
+    }
     
 
 }

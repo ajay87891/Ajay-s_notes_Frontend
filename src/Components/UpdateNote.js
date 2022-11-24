@@ -1,8 +1,11 @@
 import React, {useContext, useState} from 'react'
-import noteContext from '../Context/notes/noteContext';
+import noteContext from '../Context/notes/noteContext'
+import AlertContext from '../Context/alert/AlertContext';
 
 function UpdateNote(props) {
     const context = useContext(noteContext);
+    const context1 = useContext(AlertContext);
+    const {showAlert} = context1;
   const {editNote} = context;
   const [note, setnote] = useState({title:props.id.title, description: props.id.description, tag:"default", id:props.id.id});
   const onChange = (e)=>{
@@ -13,6 +16,8 @@ function UpdateNote(props) {
     e.preventDefault()
     editNote(note.id, note.description, note.title, note.tag)
     props.state(false)
+    showAlert("Note Updated", "Success", "visible")
+
       
   }
 

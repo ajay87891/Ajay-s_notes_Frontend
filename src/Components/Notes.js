@@ -6,10 +6,13 @@ import AddNote from './AddNote';
 import AddNoteCard from './AddNoteCard';
 import UpdateNote from './UpdateNote';
 import ShowNote from './ShowNote';
+import { useNavigate } from 'react-router-dom';
+import Profile from "./Profile";
 
 function Notes() {
 
     const context = useContext(noteContext);
+    let navigate = useNavigate();
     const {notes, getNotes} = context;
     const [trigger, settrigger] = useState(false);
     const [triggerShow, settriggerShow] = useState(false);
@@ -21,12 +24,27 @@ function Notes() {
         tag: ""
     });
     useEffect(() => {
+      if(localStorage.getItem('token'))
+      {
         getNotes();
+      }
+      else{
+        navigate("/login")
+      }
+       
     }, []);
 
   return (
+
     <>
-    <h2 className='text-4xl text-slate-700 mx-auto dark:text-slate-200'>Your Notes</h2>
+     <div className='flex justify-center items-center pt-14' >
+     <div className="absolute right-3 top-36 sm:top-24 w-44 max-h-28">
+        <Profile/>
+      
+
+      </div>
+      <div className='w-10/12 mt-10'>
+    <h2 className='text-4xl text-slate-700 mx-auto mt-10 sm:mt-0 dark:text-slate-200'>Your Notes</h2>
     <Popup trigger={trigger} state={settrigger}>
        <UpdateNote id={id} state={settrigger}/>
     </Popup>
@@ -52,6 +70,7 @@ function Notes() {
     return <NoteItem key={note._id} note={note} setId={setId} settrigger={settrigger} settriggerShow={settriggerShow}/>
          })}
     </div>
+    </div></div>
   </>
   )
 }

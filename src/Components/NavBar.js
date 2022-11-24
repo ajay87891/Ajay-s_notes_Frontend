@@ -77,7 +77,7 @@ const NavBar = () => {
                 />
               </span>
               <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-                {t("greet.2")}
+                {t("home.2")}
               </span>
             </Link>
             
@@ -106,8 +106,8 @@ const NavBar = () => {
             </button>
 
             <div className="hidden w-full md:block md:w-auto" id="expand">
-              <ul className="flex flex-col p-4 mt-4 bg-gray-50/30 rounded-lg border border-gray-100 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white/0 dark:bg-gray-800/40 md:dark:bg-gray-900/0 dark:border-gray-700  ease-linear duration-500">
-                <li>
+              <ul className="flex flex-col p-4 mt-4 bg-gray-50/30 rounded-lg border border-gray-100 md:flex-row md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white/0 dark:bg-gray-800/40 md:dark:bg-gray-900/0 dark:border-gray-700  ease-linear duration-500">
+                <li className="md:px-4">
                   <Link
                     to="/"
                     className={`block py-2 pr-4 pl-3 md:p-0 rounded ${location.pathname === "/"?"md:bg-transparent text-white bg-blue-700 md:text-blue-700 dark:text-white":"ease-linear duration-500 text-gray-700  hover:bg-gray-300 hover:text-blue-800 md:hover:bg-transparent md:border-0 md:hover:text-blue-700  dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"}`}
@@ -117,7 +117,7 @@ const NavBar = () => {
                     {t("Nav.1")}
                   </Link>
                 </li>
-                <li>
+                <li className="md:px-4">
                   <Link
                     to="/about"
                     className={`block py-2 pr-4 pl-3 md:p-0 rounded ${location.pathname === "/about"?"md:bg-transparent text-white bg-blue-700 md:text-blue-700 dark:text-white":"ease-linear duration-500 text-gray-700  hover:bg-gray-300 hover:text-blue-800 md:hover:bg-transparent md:border-0 md:hover:text-blue-700  dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"}`}
@@ -128,24 +128,37 @@ const NavBar = () => {
                     {t("Nav.2")}
                   </Link>
                 </li>
-                <li>
+                <li className={`${localStorage.getItem('token')?"":"md:px-4"}`}>
                   <Link
                     to="/login"
-                    className={`block py-2 pr-4 pl-3 md:p-0 rounded ${location.pathname === "/login"?"md:bg-transparent text-white bg-blue-700 md:text-blue-700 dark:text-white":"ease-linear duration-500 text-gray-700  hover:bg-gray-300 hover:text-blue-800 md:hover:bg-transparent md:border-0 md:hover:text-blue-700  dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"}`}
+                    className={`rounded ${localStorage.getItem('token')?"hidden":"block  md:p-0 py-2 pr-4 pl-3"} ${location.pathname === "/login"?"md:bg-transparent text-white bg-blue-700 md:text-blue-700 dark:text-white":"ease-linear duration-500 text-gray-700  hover:bg-gray-300 hover:text-blue-800 md:hover:bg-transparent md:border-0 md:hover:text-blue-700  dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"}`}
                     aria-current="page"
                     onClick={dismissNavLink}
                   >
                     {t("Nav.3")}
                   </Link>
                 </li>
-                <li>
+                <li className={`${localStorage.getItem('token')?"":"md:px-4"}`}>
                   <Link
                     to="/signup"
-                    className={`block py-2 pr-4 pl-3 md:p-0 rounded ${location.pathname === "/signup"?"md:bg-transparent text-white bg-blue-700 md:text-blue-700 dark:text-white":"ease-linear duration-500 text-gray-700  hover:bg-gray-300 hover:text-blue-800 md:hover:bg-transparent md:border-0 md:hover:text-blue-700  dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"}`}
+                    className={`  ${localStorage.getItem('token')?"hidden":"md:p-0  py-2 pr-4 pl-3 block"} rounded ${location.pathname === "/signup"?"md:bg-transparent text-white bg-blue-700 md:text-blue-700 dark:text-white":"ease-linear duration-500 text-gray-700  hover:bg-gray-300 hover:text-blue-800 md:hover:bg-transparent md:border-0 md:hover:text-blue-700  dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"}`}
                     aria-current="page"
                     onClick={dismissNavLink}
                   >
                     {t("Nav.4")}
+                  </Link>
+                </li>
+                <li className={`${localStorage.getItem('token')?"md:px-4":""}`}>
+                  <Link
+                    to="/login"
+                    className={`block   md:p-0 ${localStorage.getItem('token')?"py-2 pr-4 pl-3":"hidden"} rounded ${location.pathname === "/signup"?"md:bg-transparent text-white bg-blue-700 md:text-blue-700 dark:text-white":"ease-linear duration-500 text-gray-700  hover:bg-gray-300 hover:text-blue-800 md:hover:bg-transparent md:border-0 md:hover:text-blue-700  dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"}`}
+                    aria-current="page"
+                    onClick={()=>{
+                      dismissNavLink()
+                      localStorage.removeItem('token')
+                    }}
+                  >
+                    {t("Nav.5")}
                   </Link>
                 </li>
                 

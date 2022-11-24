@@ -4,11 +4,14 @@ import delIconWhite from '../icons/DeleteWhite.svg'
 import editIcon from '../icons/EditLight.png'
 import editIconDark from '../icons/EditDark.png'
 import noteContext from '../Context/notes/noteContext'
+import AlertContext from '../Context/alert/AlertContext';
 
 
 
 
 function NoteItem(props) {
+  const context1 = useContext(AlertContext);
+    const {showAlert} = context1;
   const context = useContext(noteContext);
   const {deleteNote} = context;
   const handelView = ()=>{
@@ -36,10 +39,11 @@ function NoteItem(props) {
     <h5 className=" cursor-pointer mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white break-words" onClick={handelView}>{props.note.title}</h5>
    
     <p className="font-normal text-gray-700 dark:text-gray-400 cursor-pointer break-words" onClick={handelView}>{(props.note.description.length<= 60)?props.note.description:props.note.description.slice(0,60)+"...."}</p>
-    <p className='text-slate-800 text-sm italic font-serif'>{props.note.tag}</p>
+    <p className='text-slate-800 text-sm italic font-serif bg-red-600/30 dark:text-slate-400  rounded-2xl inline p-1'>{props.note.tag}</p>
     <div className='flex flex-row-reverse'>
         <span className='cursor-pointer' onClick={()=>{
           deleteNote(props.note._id)
+          showAlert("Note Deleted", "Success", "visible")
         }}>
     <img src={delIcon} alt="Delete" className="h-5 mx-2 mt-3 dark:hidden" />
     <img src={delIconWhite} alt="Delete" className="h-5 mx-2 mt-3  hidden dark:inline" /></span>

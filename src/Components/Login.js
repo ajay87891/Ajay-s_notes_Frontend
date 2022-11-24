@@ -2,8 +2,10 @@ import React, { useState,useContext } from "react";
 import { Link } from "react-router-dom";
 import {useNavigate} from 'react-router-dom'
 import AlertContext from "../Context/alert/AlertContext";
+import { useTranslation } from "react-i18next";
 
 function Login() {
+  const {t} = useTranslation();
   const context = useContext(AlertContext);
   const {showAlert} = context;
     let navigate = useNavigate();
@@ -24,6 +26,7 @@ function Login() {
         localStorage.setItem("token", json.authToken);
         console.log(json.authToken); //Redirect from here
         navigate('/')
+        showAlert("Login Successful", "Success", "visible");
 
       } else {
         console.log(json.error); // Alert here
@@ -46,14 +49,16 @@ function Login() {
         <div className="w-full max-w-sm p-4 bg-white/25 border border-gray-200 rounded-lg shadow-md sm:p-6 md:p-8 dark:bg-gray-800/25 dark:border-gray-700">
           <form className="space-y-6" onSubmit={handelSubmit}>
             <h5 className="text-xl font-medium text-gray-900 dark:text-white">
-              Sign in to our platform
+            {t("login.1")}
+              
             </h5>
             <div>
               <label
                 htmlFor="email"
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >
-                Your email
+                {t("login.2")}
+                
               </label>
               <input
                 type="email"
@@ -71,7 +76,8 @@ function Login() {
                 htmlFor="password"
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >
-                Your password
+                {t("login.3")}
+                
               </label>
               <input
                 type="password"
@@ -84,7 +90,7 @@ function Login() {
                 required
               />
             </div>
-            <div className="flex items-start">
+            {/* <div className="flex items-start">
               <div className="flex items-start">
                 <div className="flex items-center h-5">
                   <input
@@ -101,26 +107,29 @@ function Login() {
                   Remember me
                 </label>
               </div>
-              {/* <a
+              <a
                 href="/"
                 className="ml-auto text-sm text-blue-700 hover:underline dark:text-blue-500"
               >
                 Lost Password?
-              </a> */}
-            </div>
+              </a>
+            </div> */}
             <button
               type="submit"
               className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
-              Login to your account
+              {t("login.4")}
+              
             </button>
             <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
-              Not registered?{" "}
+            {t("login.5")}
+              {" "}
               <Link
                 to="/signup"
                 className="text-blue-700 hover:underline dark:text-blue-500"
               >
-                Create account
+                {t("login.6")}
+                
               </Link>
             </div>
           </form>

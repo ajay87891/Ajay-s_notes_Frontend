@@ -1,9 +1,12 @@
 import React, { useContext, useState } from 'react';
 import noteContext from '../Context/notes/noteContext'
+import AlertContext from '../Context/alert/AlertContext'
 
 function AddNote(props) {
   const context = useContext(noteContext);
+  const context1 = useContext(AlertContext);
   const {addNote} = context;
+  const {showAlert} = context1;
  
   const [note, setnote] = useState({title:"", description:"", tag:"default"});
   const [titleval, settitleval] = useState(note.title.length)
@@ -30,6 +33,8 @@ function AddNote(props) {
     e.preventDefault()
     addNote(note.title, note.description, note.tag);
     props.state(false)
+    showAlert("Note Added", "Success", "visible")
+
       
   }
 

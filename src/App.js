@@ -8,6 +8,7 @@ import AlertState from "./Context/alert/AlertState"
 import Login from './Components/Login';
 import Signup from './Components/Signup';
 import Alert from './Components/Alert';
+import Notes from './Components/Notes';
 
 function App() {
 
@@ -35,6 +36,11 @@ function App() {
             element={
             <Home/>}
             />
+            <Route exact path="/notes" 
+            element={
+            <Notes/>}
+            />
+
              <Route exact path="/about"
               element = {<About />}
             />

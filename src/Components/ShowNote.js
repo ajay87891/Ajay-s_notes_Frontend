@@ -7,7 +7,8 @@ function ShowNote(props) {
         <hr class="my-8 h-px bg-gray-200 border-0 dark:bg-gray-700"/>
 
         <p className='text-slate-800 dark:text-slate-300 overflow-scroll break-words scrollbar-hide'>{props.id.description}</p>
-        <p className='text-slate-800 dark:text-slate-300 italic text-sm absolute '>{props.id.tag}</p>
+        <span>
+        <p className='text-slate-800 dark:text-slate-300 italic text-sm absolute '>{props.id.tag}</p></span>
       
     </div>
   )

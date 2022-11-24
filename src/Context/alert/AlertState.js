@@ -6,13 +6,13 @@ const AlertState = (props) => {
     type: "",visi:"invisible"});
   const showAlert = (message, type, visiblity)=>{
     setAlert({
+      visi: visiblity,
       msg: message,
       type: type,
-      visi: visiblity
+      
     })
     setTimeout(() => {
-      setAlert({visi:"invisible", msg: "",
-      type: "",});
+      setAlert({visi:"invisible"});
     }, 1500);
   }
 
